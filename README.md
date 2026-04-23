@@ -1,7 +1,6 @@
 # iOS Extraction Scripts
 
-Pull IPA or app data container from a jailbroken iOS device over SSH. Mirrors the Android adb scripts in this repo.
-
+Pull IPA or app data container from a jailbroken iOS device over SSH.
 ## Requirements
 
 - Jailbroken iOS device
