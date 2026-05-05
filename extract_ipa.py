@@ -6,10 +6,11 @@ import sys
 
 DEVICE_USER = os.environ.get("IOS_USER", "root")
 DEVICE_HOST = os.environ.get("IOS_HOST", "iphone.local")
+PORT = "2222"
 
 def ssh(cmd):
     return subprocess.run(
-        ["ssh", f"{DEVICE_USER}@{DEVICE_HOST}", cmd],
+        ["ssh", "-p", PORT, f"{DEVICE_USER}@{DEVICE_HOST}", cmd],
         capture_output=True, text=True, check=True
     )
 
@@ -66,7 +67,7 @@ def extract_ipa(identifier, by_uuid):
         output_file = f"{out_name}.ipa"
         print("Downloading IPA...")
         subprocess.run(
-            ["scp", f"{DEVICE_USER}@{DEVICE_HOST}:{tmp_ipa}", output_file],
+            ["scp", "-P", PORT, f"{DEVICE_USER}@{DEVICE_HOST}:{tmp_ipa}", output_file],
             check=True
         )
 
